@@ -58,8 +58,8 @@ class LoScore {
   uniq(array) {
     // YOUR CODE HERE
     //create variable for RETURN
-    let resultArray = [];
-    for (let element of array) {
+    const resultArray = [];
+    for (const element of array) {
       if (resultArray.includes(element)) {
         continue;
       } else resultArray.push(element);
