@@ -330,7 +330,7 @@ describe("LoScore", () => {
       });
     });
 
-    describe.only("reject", () => {
+    describe("reject", () => {
       beforeEach(() => {
         spy(_, "filter");
       });
@@ -366,7 +366,7 @@ describe("LoScore", () => {
       });
     });
 
-    describe("reduce", () => {
+    describe.only("reduce", () => {
       beforeEach(() => {
         spy(_, "each");
       });

@@ -113,6 +113,18 @@ class LoScore {
 
   reduce(collection, iterator, accumulator) {
     // YOUR CODE HERE
+    if (accumulator === undefined) {
+      // accumulator = first element if not given
+      accumulator = collection[0];
+      // removing the first element of the array
+      collection = collection.slice(1);
+    }
+    this.each(collection, (val) => {
+      // accumulator is now the TOTAL of each pass-through
+      accumulator = iterator(accumulator, val);
+    });
+    // returns the accumulator aka the TOTAL
+    return accumulator;
   }
 
   every() {
