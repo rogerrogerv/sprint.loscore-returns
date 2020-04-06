@@ -11,8 +11,60 @@ class LoScore {
   | ARRAYS
   |~~~~~~~~~~
   * */
+  //   uniq(array) {
+  //     // YOUR CODE HERE
+  //     //create variable for RETURN
+  //     let resultArray = [];
+  //     let newSet = new Set();
+
+  //     //iterate through the array
+  //   for (let element of array){
+  //     newSet.add(element);
+  //   }
+  //     resultArray = [...newSet];
+
+  //   //   if (includeUniq(result, element)){
+  //   //     continue;
+  //   //   } else result.push(element);
+  //   // }
+  //     // console.log(resultArray);
+  //     return resultArray;
+  // // }
+  //   }
+
+  // uniq(array) {
+  //   // YOUR CODE HERE
+  //   //create variable for RETURN
+  //   let resultArray = [];
+  //   for (let element of array){
+
+  //     if (includeUniq(resultArray, element)){
+  //       continue;
+  //     } else resultArray.push(element);
+  //   }
+
+  //   function includeUniq(array, el){
+  //     let isIncluded = false;
+  //     for (let i of array){
+  //       if(i === el){
+  //         isIncluded = true;
+  //       }
+  //     }
+  //     return isIncluded;
+  //   };
+  //   return resultArray;
+  // }
+
   uniq(array) {
     // YOUR CODE HERE
+    //create variable for RETURN
+    let resultArray = [];
+    for (let element of array) {
+      if (resultArray.includes(element)) {
+        continue;
+      } else resultArray.push(element);
+    }
+    return resultArray;
   }
 
   /**
@@ -32,8 +84,22 @@ class LoScore {
     }
   }
 
+  /*_.map - similar to _.each, but returns an array capturing all results returned 
+  by passing the iteratee the value, key (or index), and collection. 
+  The iteratee should return the resulting value that is to be stored in the 
+  array eventually returned by map. Use each in your solution.
+
+  */
+
   map(collection, iteratee) {
-    // YOUR CODE HERE
+    let result = 0;
+    each(collection, iteratee);
+
+    iteratee(value, key, collection);
+
+    // console.log(`iteratee ${iteratee}`);
+
+    return result;
   }
 
   filter(collection, test) {
