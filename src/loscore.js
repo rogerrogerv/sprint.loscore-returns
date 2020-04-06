@@ -1,5 +1,6 @@
 // Let's make an object and start adding methods to it!
 // Working together with Kohki
+// testing pushes
 
 class LoScore {
   identity(val) {
