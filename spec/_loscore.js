@@ -366,7 +366,7 @@ describe("LoScore", () => {
       });
     });
 
-    describe.only("reduce", () => {
+    describe("reduce", () => {
       beforeEach(() => {
         spy(_, "each");
       });
@@ -540,7 +540,7 @@ describe("LoScore", () => {
     });
   });
 
-  describe("Objects", () => {
+  describe.only("Objects", () => {
     beforeEach(() => {
       spyOnNativeMethods();
     });

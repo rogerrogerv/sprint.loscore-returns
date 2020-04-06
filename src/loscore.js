@@ -127,16 +127,47 @@ class LoScore {
     return accumulator;
   }
 
-  every() {
+  every(collection, test) {
     // YOUR CODE HERE
+    if (collection.length === 0) {
+      //empty collection will be true
+      return true;
+    }
+    // eslint-disable-next-line prettier/prettier
+    return this.reduce(
+      collection,
+      (isPassed, item) => {
+        //^^isPassed aka TOTAL aka accumulator = TRUE
+        if (!isPassed) {
+          return false;
+        }
+        return test(item);
+        // ^^runs the test on each item aka VAL
+        // eslint-disable-next-line prettier/prettier
+      },
+      true
+    );
+    // ^^accumulator is always passed in as TRUE aka TOTAL is now TRUE
   }
 
   /**
   | OBJECTS
   |~~~~~~~~~~
   * */
-  extend(obj) {
+  extend(...obj) {
     // YOUR CODE HERE
+    for (let i = 1; i < obj.length; i++) {
+      this.each(obj[i], (val, key) => {
+        //^^iterate over the properties of the object
+        if (obj[i].hasOwnProperty(key)) {
+          //^^checks if the object has the property
+          // then assigns the value of it to the original obj
+          obj[0][key] = obj[i][key];
+        }
+      });
+    }
+    //returns the original object, extended
+    return obj[0];
   }
 
   /**
