@@ -254,7 +254,7 @@ describe("LoScore", () => {
       });
     });
 
-    describe.only("map", () => {
+    describe("map", () => {
       beforeEach(() => {
         spy(_, "each");
       });
@@ -330,7 +330,7 @@ describe("LoScore", () => {
       });
     });
 
-    describe("reject", () => {
+    describe.only("reject", () => {
       beforeEach(() => {
         spy(_, "filter");
       });

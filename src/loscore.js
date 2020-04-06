@@ -105,7 +105,11 @@ class LoScore {
     return result;
   }
 
-  reject(collection, test) {}
+  reject(collection, test) {
+    const result = [];
+    this.filter(collection, (val) => !test(val) && result.push(val));
+    return result;
+  }
 
   reduce(collection, iterator, accumulator) {
     // YOUR CODE HERE
