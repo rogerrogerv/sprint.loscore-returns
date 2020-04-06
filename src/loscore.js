@@ -57,15 +57,6 @@ class LoScore {
 
   uniq(array) {
     // YOUR CODE HERE
-<<<<<<< HEAD
-    // create some variable to RETURN
-    let result = [];
-
-    // iterate through the array
-
-    // inside the loop - if the current element is already in the array, should NOT push
-    //  into the new array, if it is, then push.
-=======
     //create variable for RETURN
     let resultArray = [];
     for (let element of array) {
@@ -74,7 +65,6 @@ class LoScore {
       } else resultArray.push(element);
     }
     return resultArray;
->>>>>>> 84ccb0f9b7909ed14b53864718437c389843dc38
   }
 
   /**
@@ -102,13 +92,10 @@ class LoScore {
   */
 
   map(collection, iteratee) {
-    let result = 0;
-    each(collection, iteratee);
-
-    iteratee(value, key, collection);
-
-    // console.log(`iteratee ${iteratee}`);
-
+    const result = [];
+    this.each(collection, (val, key, col) =>
+      result.push(iteratee(val, key, col))
+    );
     return result;
   }
 
