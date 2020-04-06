@@ -641,7 +641,7 @@ describe("LoScore", () => {
     afterEach(() => {
       releaseSpies();
     });
-    describe.only("once", () => {
+    describe("once", () => {
       it("should not use native methods", () => {
         _.once(() => {});
         expect(spyReport()).to.be.false;

@@ -129,11 +129,10 @@ class LoScore {
 
   every(collection, test) {
     // YOUR CODE HERE
-    if (collection.length === 0) {
+    if (collection.length === 0 || test === undefined) {
       //empty collection will be true
       return true;
-    }
-    // eslint-disable-next-line prettier/prettier
+    } // eslint-disable-next-line prettier/prettier
     return this.reduce(
       collection,
       (passedTest, item) => {
@@ -192,10 +191,37 @@ class LoScore {
 
   memoize(func) {
     // YOUR CODE HERE
+    //creates the cache object for closure use
+    const cache = {};
+    return function(args) {
+      //checks to see if the functions was run previously (stored in cache)
+      if (JSON.stringify(args) in cache) {
+        // returns the cached function if found
+        return cache[JSON.stringify(args)];
+      }
+      // stores the function into the cache with each result being *unique*
+      // due to differing arguments
+      return (cache[JSON.stringify(args)] = func(args));
+    };
   }
 
   invoke(collection, functionOrKey) {
     // YOUR CODE HERE
+    const result = [];
+    if (typeof functionOrKey === "function") {
+      //^^checks if the method passed in is a function
+      // if so then applies it function(style)
+      this.map(collection, (value) => result.push(functionOrKey.apply(value)));
+      // the ELSE is needed for this to work ?? why?
+      // eslint-disable-next-line prettier/prettier
+    } else {
+      this.map(collection, (value, i, collection) =>
+        // else we will apply it [key]
+        // eslint-disable-next-line prettier/prettier
+        result.push(collection[i][functionOrKey].apply(value))
+      );
+    }
+    return result;
   }
 
   /**
