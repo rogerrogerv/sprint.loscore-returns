@@ -12,6 +12,13 @@ class LoScore {
   * */
   uniq(array) {
     // YOUR CODE HERE
+    // create some variable to RETURN
+    let result = [];
+
+    // iterate through the array
+
+    // inside the loop - if the current element is already in the array, should NOT push
+    //  into the new array, if it is, then push.
   }
 
   /**
