@@ -136,9 +136,9 @@ class LoScore {
     // eslint-disable-next-line prettier/prettier
     return this.reduce(
       collection,
-      (isPassed, item) => {
-        //^^isPassed aka TOTAL aka accumulator = TRUE
-        if (!isPassed) {
+      (passedTest, item) => {
+        //^^passedTest aka TOTAL aka accumulator = TRUE
+        if (!passedTest) {
           return false;
         }
         return test(item);
@@ -177,6 +177,17 @@ class LoScore {
 
   once(func) {
     // YOUR CODE HERE
+    //sets up the closure variables
+    let ranAlready = false;
+    let prevResults;
+    return function(...args) {
+      // if previously ran, just return the previous results
+      if (ranAlready) return prevResults;
+      // sets the flag previously ran
+      ranAlready = true;
+      // runs the function and stores the result
+      return (prevResults = func(...args));
+    };
   }
 
   memoize(func) {

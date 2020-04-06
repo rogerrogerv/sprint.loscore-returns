@@ -540,7 +540,7 @@ describe("LoScore", () => {
     });
   });
 
-  describe.only("Objects", () => {
+  describe("Objects", () => {
     beforeEach(() => {
       spyOnNativeMethods();
     });
@@ -641,7 +641,7 @@ describe("LoScore", () => {
     afterEach(() => {
       releaseSpies();
     });
-    describe("once", () => {
+    describe.only("once", () => {
       it("should not use native methods", () => {
         _.once(() => {});
         expect(spyReport()).to.be.false;
