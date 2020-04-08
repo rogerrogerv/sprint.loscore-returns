@@ -11,61 +11,26 @@ class LoScore {
   | ARRAYS
   |~~~~~~~~~~
   * */
-  //   uniq(array) {
-  //     // YOUR CODE HERE
-  //     //create variable for RETURN
-  //     let resultArray = [];
-  //     let newSet = new Set();
-
-  //     //iterate through the array
-  //   for (let element of array){
-  //     newSet.add(element);
-  //   }
-  //     resultArray = [...newSet];
-
-  //   //   if (includeUniq(result, element)){
-  //   //     continue;
-  //   //   } else result.push(element);
-  //   // }
-  //     // console.log(resultArray);
-  //     return resultArray;
-  // // }
-  //   }
+  uniq(array) {
+    // Using the Set data structure
+    let resultArray = [];
+    const newSet = new Set();
+    for (const element of array) {
+      newSet.add(element);
+    }
+    return (resultArray = [...newSet]);
+  }
 
   // uniq(array) {
-  //   // YOUR CODE HERE
-  //   //create variable for RETURN
-  //   let resultArray = [];
-  //   for (let element of array){
-
-  //     if (includeUniq(resultArray, element)){
+  //   // Keeping this code as original answer
+  //   const resultArray = [];
+  //   for (const element of array) {
+  //     if (resultArray.includes(element)) {
   //       continue;
   //     } else resultArray.push(element);
   //   }
-
-  //   function includeUniq(array, el){
-  //     let isIncluded = false;
-  //     for (let i of array){
-  //       if(i === el){
-  //         isIncluded = true;
-  //       }
-  //     }
-  //     return isIncluded;
-  //   };
   //   return resultArray;
   // }
-
-  uniq(array) {
-    // YOUR CODE HERE
-    //create variable for RETURN
-    const resultArray = [];
-    for (const element of array) {
-      if (resultArray.includes(element)) {
-        continue;
-      } else resultArray.push(element);
-    }
-    return resultArray;
-  }
 
   /**
   | COLLECTIONS
@@ -83,13 +48,6 @@ class LoScore {
       }
     }
   }
-
-  /*_.map - similar to _.each, but returns an array capturing all results returned 
-  by passing the iteratee the value, key (or index), and collection. 
-  The iteratee should return the resulting value that is to be stored in the 
-  array eventually returned by map. Use each in your solution.
-
-  */
 
   map(collection, iteratee) {
     const result = [];
@@ -112,7 +70,6 @@ class LoScore {
   }
 
   reduce(collection, iterator, accumulator) {
-    // YOUR CODE HERE
     if (accumulator === undefined) {
       // accumulator = first element if not given
       accumulator = collection[0];
@@ -128,7 +85,12 @@ class LoScore {
   }
 
   every(collection, test) {
-    // YOUR CODE HERE
+    for (const el of collection) {
+      if (el === true) {
+        return true;
+      }
+    }
+
     if (collection.length === 0 || test === undefined) {
       //empty collection will be true
       return true;
@@ -154,7 +116,6 @@ class LoScore {
   |~~~~~~~~~~
   * */
   extend(...obj) {
-    // YOUR CODE HERE
     for (let i = 1; i < obj.length; i++) {
       this.each(obj[i], (val, key) => {
         //^^iterate over the properties of the object
@@ -175,7 +136,6 @@ class LoScore {
   * */
 
   once(func) {
-    // YOUR CODE HERE
     //sets up the closure variables
     let ranAlready = false;
     let prevResults;
@@ -190,8 +150,7 @@ class LoScore {
   }
 
   memoize(func) {
-    // YOUR CODE HERE
-    //creates the cache object for closure use
+    //Creates the cache object for closure use
     const cache = {};
     return function(args) {
       //checks to see if the functions was run previously (stored in cache)
@@ -206,18 +165,15 @@ class LoScore {
   }
 
   invoke(collection, functionOrKey) {
-    // YOUR CODE HERE
     const result = [];
     if (typeof functionOrKey === "function") {
       //^^checks if the method passed in is a function
       // if so then applies it function(style)
       this.map(collection, (value) => result.push(functionOrKey.apply(value)));
       // the ELSE is needed for this to work ?? why?
-      // eslint-disable-next-line prettier/prettier
     } else {
       this.map(collection, (value, i, collection) =>
         // else we will apply it [key]
-        // eslint-disable-next-line prettier/prettier
         result.push(collection[i][functionOrKey].apply(value))
       );
     }
