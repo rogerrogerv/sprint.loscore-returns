@@ -13,6 +13,7 @@ class LoScore {
   * */
   uniq(array) {
     // Using the Set data structure
+    // eslint-disable-next-line no-unused-vars
     let resultArray = [];
     const newSet = new Set();
     for (const element of array) {
